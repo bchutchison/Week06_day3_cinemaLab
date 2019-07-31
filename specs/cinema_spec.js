@@ -24,20 +24,19 @@ describe('Cinema', function () {
   });
 
   it('should have a collection of films', function () {
+    const actual = cinema.films;
+    assert.deepStrictEqual(actual, films);
+  });
+
+  it('should be able to get a list of film titles', function (){
     const filmTitles = ['Moonlight', 'Blade Runner 2049', 'Dunkirk', 'Black Panther', 'T2 Trainspotting'];
     const actual = cinema.filmTitles();
     assert.deepStrictEqual(actual, filmTitles);
   });
 
-  it('should be able to get a list of film titles', function (){
-    const actual = cinema.films;
-    assert.deepStrictEqual(actual, films);
-  });
-
   it('should be able to find a film by title', function (){
-    const title = [moonlight]
     const actual = cinema.findFilmByTitle("Moonlight");
-    assert.deepStrictEqual(actual, title);
+    assert.deepStrictEqual(actual, moonlight);
   });
 
   it('should be able to filter films by genre', function (){

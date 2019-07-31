@@ -3,19 +3,19 @@ const Cinema = function (films) {
 };
 
 Cinema.prototype.filmTitles = function () {
-  const titleArray = [];
-  this.films.map((item) => {
-    titleArray.push(item.title);
-  })
-  return titleArray;
+  return this.films.map(film => film.title)
 };
 
 Cinema.prototype.findFilmByTitle = function (filmTitle) {
-  const result = this.films.filter((film) => {
+  // return this.films.filter((film) => {
+  //   return film.title === filmTitle;
+  // })
+  return this.films.find((film) => {
     return film.title === filmTitle;
   })
-  return result;
 };
+
+// .find will return result from array, not array(like filter)
 
 Cinema.prototype.findFilmByGenre = function (filmGenre) {
   const result = this.films.filter((film) => {
@@ -25,31 +25,27 @@ Cinema.prototype.findFilmByGenre = function (filmGenre) {
 }
 
 Cinema.prototype.filmExistsByYear = function (filmYear) {
-  const result = this.films.some((film) => {
+  return this.films.some((film) => {
     return film.year === filmYear;
   });
-  return result;
 }
 
 Cinema.prototype.filmLength = function (filmLength) {
-  const result = this.films.every ((film) => {
+  return this.films.every ((film) => {
     return film.length > filmLength;
   });
-  return result;
 }
 
 Cinema.prototype.filmsTotalLength = function (){
-  const result = this.films.reduce ((runningTotal, film) => {
+  return this.films.reduce ((runningTotal, film) => {
     return runningTotal + film.length;
   }, 0 );
-  return result;
 }
 
 Cinema.prototype.filmsByProperty = function (name, value) {
-  const result = this.films.filter((film) => {
+  return this.films.filter((film) => {
     return film[name] === value;
-  })
-  return result;
+  });
 }
 
 module.exports = Cinema;
